@@ -1,0 +1,38 @@
+# Dependency directories
+/node_modules
+/.pnp
+.pnp.js
+
+# Optional npm cache directory
+.npm
+
+# Tailwind CSS build directory (if using JIT mode)
+/.cache
+/tailwind.config.cache
+
+# IDEs and editors
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# Logs
+logs
+*.log
+
+# Output files
+/dist
+/build
+
+# Environment variables
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# OS generated files
+.DS_Store
+Thumbs.db

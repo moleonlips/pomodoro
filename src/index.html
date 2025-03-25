@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pomodoro app</title>
+    <link href="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="./output.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Boldonse&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        * {
+            font-family: "Boldonse", system-ui;
+            font-style: normal;
+        }
+
+        .active {
+            display: block !important;
+        }
+
+        .text-normal {
+            font-family: sans-serif;
+            font-size: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="w-full bg-amber-800 h-lvh grid justify-center">
+        <div class="w-xl text-white min-h-5/12">
+            <!-- head -->
+            <div
+                class="relative grid pt-2 grid-cols-2 items-center border-b-gray-100 border-b-1 timeline-full overflow-hidden">
+                <div class="hover:cursor-pointer">Harder but smarter</div>
+                <div class="grid justify-end grid-cols-3 mb-2">
+                    <div
+                        class="text-xs text-center bg-amber-600 rounded-md px-0.5 hover:bg-amber-700 hover:cursor-pointer py-1.5 ml-2">
+                        Report</div>
+                    <div
+                        class="text-xs text-center bg-amber-600 rounded-md px-0.5 hover:bg-amber-700 hover:cursor-pointer py-1.5 ml-2">
+                        Setting</div>
+                    <div
+                        class="text-xs text-center bg-amber-600 rounded-md px-0.5 hover:bg-amber-700 hover:cursor-pointer py-1.5 ml-2">
+                        Sign in</div>
+                </div>
+                <div class="absolute bottom-0 timeline-run w-full mt-2 h-0.5 bg-amber-50"
+                    style="transform: translateX(-100%); transition: all linear 1s;"></div>
+            </div>
+            <!-- counting -->
+            <div class="px-16 ">
+                <div class="py-8 bg-amber-700 rounded-xl mt-10">
+                    <div class="flex justify-around">
+                        <div
+                            class="text-xs px-4 py-1.5 rounded-md text-center bg-amber-600 hover:bg-amber-600 hover:cursor-pointer">
+                            Pomodoro</div>
+                        <div class="text-xs px-4 py-1.5 rounded-md text-center hover:bg-amber-600 hover:cursor-pointer">
+                            Short break</div>
+                        <div class="text-xs px-4 py-1.5 rounded-md text-center hover:bg-amber-600 hover:cursor-pointer">
+                            Long break</div>
+                    </div>
+
+                    <div class="text-5xl flex py-10 justify-center px-10">
+                        <div id="minute" class="flex-4 text-right">00</div>
+                        <div class="flex-1 text-center">:</div>
+                        <div id="second" class="flex-4 text-left">00</div>
+                    </div>
+
+                    <div class="grid justify-center">
+                        <button
+                            class="bg-gray-100 px-10 py-6 text-amber-700 text-2xl rounded-2xl hover:shadow-gray-800 hover:shadow-md hover:cursor-pointer hidden btn-play btn-start active">start</button>
+                        <button
+                            class="bg-gray-100 px-10 py-6 text-amber-700 text-2xl rounded-2xl hover:shadow-gray-800 hover:shadow-md hover:cursor-pointer hidden btn-play btn-pause">pause</button>
+                        <button
+                            class="bg-gray-100 px-10 py-6 text-amber-700 text-2xl rounded-2xl hover:shadow-gray-800 hover:shadow-md hover:cursor-pointer hidden btn-play btn-resume">resume</button>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- task info -->
+            <div class="px-16 py-8">
+                <div class="text-center text-xs text-gray-400">#1</div>
+                <div class="text-center text-xs">task name</div>
+            </div>
+            
+
+            <!-- controller -->
+            <div class="px-16">
+                <div class="flex justify-between items-center border-b-2 border-gray-50 pb-2 relative">
+                    <div class="felx-1">Task</div>
+                    <button id="dropdownMenuIconHorizontalButton" data-dropdown-toggle="dropdownDotsHorizontal"
+                        class="inline-flex items-center p-2 text-sm font-medium text-center text-white bg-amber-600 rounded-lg border border-gray-300"
+                        type="button">
+                        <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 4 15">
+                            <path d="M3.5 1.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm0 6.041a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm0 5.959a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z"/>
+                            </svg>
+                    </button>
+
+                    <!-- Dropdown menu -->
+                    <div id="dropdownDotsHorizontal"
+                        class="z-10 hidden bg-white rounded-lg shadow-sm right-[80px]">
+                        <ul class="py-2 text-sm text-gray-700 list-none"
+                            aria-labelledby="dropdownMenuIconHorizontalButton">
+                            <li class="text-normal flex hover:cursor-pointer items-end px-4 hover:bg-amber-50 py-4">
+                                <i class="fa-solid fa-trash text-xl mr-1"></i>
+                                Clear finished tasks
+                            </li>
+                            <li class="text-normal flex hover:cursor-pointer items-center px-4 hover:bg-amber-50 py-4">
+                                <i class="fa-solid fa-copy text-xl mr-1"></i>
+                                Use template
+                            </li>
+                            <li
+                                class="text-normal flex hover:cursor-pointer items-center px-4 hover:bg-amber-50 py-4 border-b border-gray-300">
+                                <i class="fa-solid fa-check text-xl mr-1"></i>
+                                Clear act pomodoros
+                            </li>
+                            <li class="text-normal flex hover:cursor-pointer items-center px-4 hover:bg-amber-50">
+                                <i class="fa-solid fa-trash text-xl py-4 mr-1"></i>
+                                Clear all task
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="p-4 bg-amber-50 rounded-md mt-4"></div>
+
+                <div class="p-4 bg-amber-50 rounded-md mt-4 border-l-8 border-l-black border-solid dragable">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <i class="fa-solid fa-circle-check text-2xl text-gray-400"></i>
+                            <span class="text-gray-600 text-xs ml-1">Task name</span>
+                        </div>
+
+                        <div class="flex items-center">
+                            <span class="text-gray-400 text-xs mr-2">1</span> <span class="text-gray-400 text-xs mr-2">
+                                / 5</span>
+                            <div
+                                class="text-center grid items-center w-8 h-8 rounded-md text-gray-600 border border-solid border-gray-300 hover:cursor-pointer">
+                                <i class="fa-solid fa-ellipsis-vertical"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="text-gray-700 text-xs px-2 py-4 rounded-md bg-amber-100 mt-4">Quan trong nhiem vu</div>
+                </div>
+
+
+                <div class="p-4 bg-amber-50 rounded-md mt-4">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <i class="fa-solid fa-circle-check text-2xl text-gray-400"></i>
+                            <span class="text-gray-600 text-xs ml-1">Task name</span>
+                        </div>
+
+                        <div class="flex items-center">
+                            <span class="text-gray-400 text-xl mr-2">1</span> <span class="text-gray-400 text-xs mr-2">
+                                / 16</span>
+                            <div
+                                class="text-center grid items-center w-8 h-8 rounded-md text-gray-600 border border-solid border-gray-300 hover:cursor-pointer">
+                                <i class="fa-solid fa-ellipsis-vertical"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div
+                    class="opacity-80 hover:opacity-100 hover:cursor-pointer flex items-center mt-4 p-4 border-2 border-dashed border-gray-300 justify-center text-gray-300 bg-amber-900 rounded-md">
+                    <div class="h-8 w-8 rounded-full bg-gray-300 text-amber-900 flex justify-center items-center">
+                        <i class="fa-solid fa-plus text-2xl"></i>
+                    </div>
+                    <span class="ml-2">Add task</span>
+                </div>
+
+
+                <div class="text-center border-t border-solid border-white py-5 bg-amber-700 text-gray-300 mt-6">
+                    Pomos <span class="text-xl text-white">17</span>
+                    / <span class="text-xl text-white">21</span>
+                    Finish at: <span class="text-xl text-white">12</span>
+                    : <span class="text-xl text-white">20</span>
+                    (3h)
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <script src="./main.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
+
+</body>
+
+</html>
