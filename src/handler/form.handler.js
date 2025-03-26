@@ -11,4 +11,9 @@ export class FormHandler {
             
         })
     }
+
+    openForm(formID) {
+        console.log(formID);
+        
+    }
 }

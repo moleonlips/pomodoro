@@ -7,7 +7,6 @@ let formH = new FormHandler();
 let render = new FileHandle()
 render.readAndRender('./../data.json');
 
-
 formH.formSubmit();
 
 let counting_second = 50

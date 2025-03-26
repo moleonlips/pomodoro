@@ -131,6 +131,7 @@
                     </div>
                 </div>
 
+                <!-- task data render here! -->
                 <div id="task-container">
 
                     <form action="http://127.0.0.1:5500" id="form-edit">
@@ -139,14 +140,14 @@
                                 <!-- input -->
                                 <div>
                                     <input name="taskName"
-                                        class="p-0 mr-1 focus:ring-0 placeholder:text-gray-300 w-full border-0 bg-transparent text-gray-400 text-[10px] rounded-md"
-                                        type="text" value="default value" placeholder="type here">
+                                        class="p-0 mr-1 focus:ring-0 placeholder:text-gray-300 w-full border-0 bg-transparent text-gray-600 text-[10px] rounded-md"
+                                        type="text" value="default value" placeholder="type here...">
                                 </div>
 
                                 <!-- task's status -->
                                 <div class="mt-4 relative">
                                     <!-- head -->
-                                    <h4 class="text-gray-600 text-xs">Act / Est Pomodoros</h4>
+                                    <h4 class="text-gray-400 text-xs">Act / Est Pomodoros</h4>
 
                                     <div class="flex items-center mt-2">
                                         <input name="actualPomos"
@@ -186,47 +187,7 @@
                             </div>
                         </div>
                     </form>
-
-                    <div class="p-4 bg-amber-50 rounded-md mt-4 border-l-8 border-l-black border-solid dragable">
-                        <div class="flex justify-between items-center">
-                            <div>
-                                <i class="fa-solid fa-circle-check text-2xl text-gray-400"></i>
-                                <span class="text-gray-600 text-xs ml-1">Task name</span>
-                            </div>
-
-                            <div class="flex items-center">
-                                <span class="text-gray-400 text-xs mr-2">1</span> <span
-                                    class="text-gray-400 text-xs mr-2">
-                                    / 5</span>
-                                <div
-                                    class="text-center grid items-center w-8 h-8 rounded-md text-gray-600 border border-solid border-gray-300 hover:cursor-pointer">
-                                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="text-gray-700 text-xs px-2 py-4 rounded-md bg-amber-100 mt-4">Quan trong nhiem vu
-                        </div>
-                    </div>
-
-                    <div class="p-4 bg-amber-50 rounded-md mt-4">
-                        <div class="flex justify-between items-center">
-                            <div>
-                                <i class="fa-solid fa-circle-check text-2xl text-gray-400"></i>
-                                <span class="text-gray-600 text-xs ml-1">Task name</span>
-                            </div>
-
-                            <div class="flex items-center">
-                                <span class="text-gray-400 text-xl mr-2">1</span> <span
-                                    class="text-gray-400 text-xs mr-2">
-                                    / 16</span>
-                                <div
-                                    class="text-center grid items-center w-8 h-8 rounded-md text-gray-600 border border-solid border-gray-300 hover:cursor-pointer">
-                                    <i class="fa-solid fa-ellipsis-vertical"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    
                 </div>
 
                 <div
