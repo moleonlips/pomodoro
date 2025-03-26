@@ -7,6 +7,8 @@ export class Render {
         let htmlArr = notes.map((a, b) => {
             return `<div class="text-gray-700 text-xs px-2 py-4 rounded-md bg-amber-100 mt-4">${a.content}</div>`
         })
+        console.log(`htmlArr:`, htmlArr);
+        
         return htmlArr.join('');
     }
 
@@ -14,11 +16,12 @@ export class Render {
 
     renderHTML(container, data) {
 
-        data.forEach((item) => {
+        data.forEach((item, index) => {
 
             // layer 1
             let task_container = document.createElement('div');
             task_container.classList.add('p-4','bg-amber-50','rounded-md','mt-4','first:border-l-8','first:border-l-black','first:border-solid')
+            index === 0? task_container.classList.add('border-l-8','border-l-black','border-solid'): null
 
             // layer 2
             let task_flex = document.createElement('div');
@@ -29,8 +32,7 @@ export class Render {
 
             let icon = document.createElement('i');
             icon.classList.add('fa-solid','fa-circle-check','text-2xl')
-            item.isDone? icon.classList.add('text-green-400')
-                : icon.classList.add('text-gray-400')
+            item.isDone? icon.classList.add('text-green-400'): icon.classList.add('text-gray-400')
 
             icon.addEventListener('click', ()=> {
                 console.log(item.id);
@@ -67,19 +69,26 @@ export class Render {
             let icon_edit_task = document.createElement('i');
             icon_edit_task.classList.add('fa-solid','fa-ellipsis-vertical')
             icon_edit_task.addEventListener('click', () => {
-                console.log(item.id);
+                console.log(`clicked:`, item.id);
             })
 
             editTask_icon_content.appendChild(icon_edit_task)
             task_process.appendChild(editTask_icon_content);
 
             task_flex.appendChild(task_process)
-
+            
             task_container.appendChild(task_flex)
 
+            if(item.note.length > 0) {
+                item.note.forEach((note) => {
+                    let noteItem = document.createElement('div');
+                    noteItem.classList.add('text-gray-700','text-xs','px-2','py-4','rounded-md','bg-amber-100','mt-4')
+                    noteItem.textContent = note.content
+                    task_container.appendChild(noteItem)
+                })
+            }
+
             container.appendChild(task_container);
-            
-            item.note.length > 0? task_container.innerHTML += this.notesRender(item.note): ''
 
         })
 

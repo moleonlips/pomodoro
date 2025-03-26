@@ -15,9 +15,9 @@ export class FileHandle {
 
                 let data = JSON.parse(xObj.responseText);
 
-                data.sort((a, b) => {
-                    return b.piority - a.piority
-                })
+                // data.sort((a, b) => {
+                //     return b.piority - a.piority
+                // })
 
                 let container = document.querySelector('#task-container')
                 render.renderHTML(container, data)
