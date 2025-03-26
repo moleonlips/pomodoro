@@ -1,4 +1,14 @@
 import { IntervalTimer } from "./timer.js"
+import { FormHandler } from "./handler/form.handler.js"
+import { FileHandle } from "./handler/file.handler.js";
+
+let formH = new FormHandler();
+
+let render = new FileHandle()
+render.readAndRender('./../data.json');
+
+
+formH.formSubmit();
 
 let counting_second = 50
 let counting_minute = 0
